@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.presentaion.theme.ui
+package com.ridenomad.ridenomadz.presentation.theme.ui
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

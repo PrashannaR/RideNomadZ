@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.presentaion.vehiclelist
+package com.ridenomad.ridenomadz.presentation.vehiclelist
 
 import androidx.compose.runtime.Composable
 

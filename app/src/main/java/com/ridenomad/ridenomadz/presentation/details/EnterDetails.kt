@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.presentaion.details
+package com.ridenomad.ridenomadz.presentation.details
 
 import androidx.compose.runtime.Composable
 

@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.presentaion.signup
+package com.ridenomad.ridenomadz.presentation.signup
 
 import androidx.compose.runtime.Composable
 

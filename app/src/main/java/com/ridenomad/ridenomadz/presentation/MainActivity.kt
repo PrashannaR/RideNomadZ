@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.presentaion
+package com.ridenomad.ridenomadz.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ridenomad.ridenomadz.presentaion.theme.ui.RideNomadZTheme
+import com.ridenomad.ridenomadz.presentation.theme.ui.RideNomadZTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Greeting("RideNomadZ")
                 }
             }
         }
@@ -38,6 +38,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     RideNomadZTheme {
-        Greeting("Android")
+        Greeting("RideNomadZ")
     }
 }
