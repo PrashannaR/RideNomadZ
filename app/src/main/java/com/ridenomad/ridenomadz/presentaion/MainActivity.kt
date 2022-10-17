@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz
+package com.ridenomad.ridenomadz.presentaion
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ridenomad.ridenomadz.ui.theme.RideNomadZTheme
+import com.ridenomad.ridenomadz.presentaion.theme.ui.RideNomadZTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

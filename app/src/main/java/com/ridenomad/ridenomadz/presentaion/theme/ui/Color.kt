@@ -1,4 +1,4 @@
-package com.ridenomad.ridenomadz.ui.theme
+package com.ridenomad.ridenomadz.presentaion.theme.ui
 
 import androidx.compose.ui.graphics.Color
 
