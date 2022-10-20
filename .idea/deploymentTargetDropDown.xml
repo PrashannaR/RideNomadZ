@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Resizable_API_33.avd" />
+            <value value="C:\Users\aryan\.android\avd\HyperNexus.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-10-17T17:48:42.418435Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-10-20T07:14:58.956037400Z" />
   </component>
 </project>

@@ -40,16 +40,18 @@ import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
 import com.ridenomad.ridenomadz.common.toaster
+import com.ridenomad.ridenomadz.presentation.DestinationScreen
+import com.ridenomad.ridenomadz.presentation.navigateTo
 import kotlinx.coroutines.NonDisposableHandle.parent
 import java.util.*
 
 
 @Composable
-fun app(context: Context){
+fun app(context: Context,navController: NavController){
     Column(Modifier.padding(start=20.dp,end=20.dp,top=35.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         dropDownMenu()
         showDatePicker(context = context)
-        submitButton(context)
+        submitButton(context,navController)
         text()
     }
 }
@@ -66,7 +68,7 @@ fun text(){
 }
 
 @Composable
-fun submitButton(context : Context){
+fun submitButton(context : Context,navController: NavController){
 
     Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(top=32.dp)) {
         OutlinedButton(
@@ -74,7 +76,7 @@ fun submitButton(context : Context){
                 .width(134.dp)
                 .height(47.dp),
             border = BorderStroke(2.dp, color = com.ridenomad.ridenomadz.presentation.theme.ui.Purple700), shape = RoundedCornerShape(12.dp),
-            onClick = { toaster(context,"Details Saved ") }) {
+            onClick = { navigateTo(navController =navController, DestinationScreen.VehicleList) }) {
             Text(text = "Submit", fontSize = 18.sp, color = Color(R.color.primary))
         }
     }

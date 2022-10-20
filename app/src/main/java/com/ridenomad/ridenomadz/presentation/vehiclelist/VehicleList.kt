@@ -3,6 +3,7 @@ package com.ridenomad.ridenomadz.presentation.vehiclelist
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,22 +21,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.DestinationScreen
+import com.ridenomad.ridenomadz.presentation.navigateTo
 
 @Composable
-fun VehicleList() {
+fun VehicleList(navController: NavController) {
 Column(modifier = Modifier.padding(top = 0.dp, start = 25.dp,end=25.dp )) {
     Spacer(modifier = Modifier
         .height(40.dp)
         .fillMaxWidth())
-    vehicleList()
+    vehicleList(navController)
 }
 }
 
 @Preview
 @Composable
 fun test(){
-vehicleList()
+
 }
 
 @Composable
@@ -101,7 +105,7 @@ fun filterBar(){
 }
 
 @Composable
-private fun vehicleList(){
+private fun vehicleList(navController: NavController){
 LazyColumn(modifier = Modifier.padding(top = 0.dp)){
     items(10){
         topBox()
@@ -114,18 +118,22 @@ LazyColumn(modifier = Modifier.padding(top = 0.dp)){
             .fillMaxWidth())
 
         for(i in 1..80){
-            vehicleCard()
+            vehicleCard(navController)
         }
     }
 }
 }
 
 @Composable
-fun vehicleCard(){
+fun vehicleCard(navController: NavController){
     Card(elevation = 10.dp, shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .padding(10.dp)
-            .wrapContentHeight()
+            .wrapContentHeight().clickable(
+                onClick = {
+                    navigateTo(navController =navController, DestinationScreen.Home)
+                }
+            )
 
     ) {
         Column(modifier = Modifier.padding(15.dp)) {

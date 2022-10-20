@@ -29,10 +29,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.DestinationScreen
+import com.ridenomad.ridenomadz.presentation.navigateTo
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController: NavController){
     Surface(modifier = Modifier, color = Color.White) {
         Column(modifier = Modifier
             .padding(10.dp)
@@ -43,7 +46,7 @@ fun HomeScreen(){
             profile()
             searchText()
 
-            rideClass()
+            rideClass(navController)
             services()
         }
     }
@@ -52,7 +55,7 @@ fun HomeScreen(){
 @Preview
 @Composable
 fun Home() {
-HomeScreen()
+
 }
 
 @Composable
@@ -96,23 +99,28 @@ private fun searchText(){
 }
 
 @Composable
-fun rideClass(){
+fun rideClass(navController: NavController){
     LazyRow(modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()){
         items(40){
-            cardClass()
+            cardClass(navController)
             Spacer(modifier = Modifier.fillMaxWidth(0.18f))
         }
     }
 }
 
+
 @Composable
-fun cardClass(){
+fun cardClass(navController: NavController){
     Card(shape = RoundedCornerShape(10.dp), elevation = 10.dp, modifier = Modifier
         .width(160.dp)
         .padding(start = 10.dp)
-        .height(200.dp)) {
+        .height(200.dp).clickable(
+            onClick = {
+                navigateTo(navController =navController,DestinationScreen.Details)
+            }
+        )) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(modifier = Modifier
                 .fillMaxSize()

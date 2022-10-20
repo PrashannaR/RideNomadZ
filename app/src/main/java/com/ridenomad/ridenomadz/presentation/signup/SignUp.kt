@@ -21,10 +21,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
 import com.ridenomad.ridenomadz.common.toaster
+import com.ridenomad.ridenomadz.presentation.DestinationScreen
+import com.ridenomad.ridenomadz.presentation.navigateTo
 
 
 @Composable
-fun SignUp(){
+fun SignUp(navController: NavController){
     Surface(modifier = Modifier, color = Color.White) {
         Column(modifier = Modifier
             .padding(10.dp)
@@ -42,7 +44,7 @@ fun SignUp(){
                         .height(240.dp))
             }
             Surface(modifier = Modifier.fillMaxSize()) {
-                content()
+                content(navController)
             }
 
 
@@ -51,7 +53,7 @@ fun SignUp(){
 }
 
 @Composable
-fun content(){
+fun content(navController: NavController){
     Column(modifier = Modifier
         .fillMaxWidth()
         .padding(30.dp)
@@ -60,7 +62,7 @@ fun content(){
             Text(text = "Please", fontSize = 25.sp, fontWeight = FontWeight.Bold)
             Text(text = "Sign up to book your ride", fontSize = 25.sp,fontWeight = FontWeight.Bold)
         }
-        Button(onClick = {  },
+        Button(onClick = { navigateTo(navController,DestinationScreen.Home) },
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.primary), contentColor = MaterialTheme.colors.primary),
             shape = RoundedCornerShape(6.dp), modifier = Modifier
                 .fillMaxWidth()
