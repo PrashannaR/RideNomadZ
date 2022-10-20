@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
 import com.ridenomad.ridenomadz.common.toaster
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -50,7 +51,6 @@ fun app(context: Context){
         showDatePicker(context = context)
         submitButton(context)
         text()
-
     }
 }
 
@@ -73,8 +73,8 @@ fun submitButton(context : Context){
             modifier = Modifier
                 .width(134.dp)
                 .height(47.dp),
-            border = BorderStroke(2.dp, color = Color(R.color.primary)), shape = RoundedCornerShape(12.dp),
-            onClick = { toaster(context,"SUCCESS") }) {
+            border = BorderStroke(2.dp, color = com.ridenomad.ridenomadz.presentation.theme.ui.Purple700), shape = RoundedCornerShape(12.dp),
+            onClick = { toaster(context,"Details Saved ") }) {
             Text(text = "Submit", fontSize = 18.sp, color = Color(R.color.primary))
         }
     }
