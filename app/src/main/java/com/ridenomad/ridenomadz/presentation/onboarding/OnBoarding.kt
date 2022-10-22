@@ -10,7 +10,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,15 +19,53 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.*
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
 import com.ridenomad.ridenomadz.presentation.theme.ui.backgroundColor
 import com.ridenomad.ridenomadz.presentation.theme.ui.purpleish
 
 
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
 @Composable
 fun OnBoarding(navController: NavHostController) {
+    val pages = listOf(
+        OnBoardingPage.First,
+        OnBoardingPage.Second
+    )
 
+    val pagerState = rememberPagerState()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+    ) {
+        HorizontalPager(
+
+            count = 2,
+            state = pagerState,
+            verticalAlignment = Alignment.Top
+        ) { position ->
+            PagerScreen(onBoardingPage = pages[position])
+        }
+
+        HorizontalPagerIndicator(
+            modifier = Modifier
+                .align(CenterHorizontally)
+                .weight(1f),
+            pagerState = pagerState
+        )
+        FinishButton(
+            modifier = Modifier.weight(1f),
+            pagerState = pagerState
+        ) {
+            navController.popBackStack()
+            navController.navigate(Screens.Home.route)
+
+        }
+
+    }
 
 }
 
@@ -37,9 +74,10 @@ fun OnBoarding(navController: NavHostController) {
 fun PagerScreen(onBoardingPage: OnBoardingPage) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth(.8f)
+            .fillMaxHeight(.80f)
             .background(backgroundColor),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
@@ -52,7 +90,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
             contentDescription = "On boarding image",
 
 
-        )
+            )
 
         Text(
             text = onBoardingPage.title,
@@ -63,7 +101,7 @@ fun PagerScreen(onBoardingPage: OnBoardingPage) {
             fontWeight = FontWeight.SemiBold,
             fontSize = 22.sp
 
-            )
+        )
 
     }
 
