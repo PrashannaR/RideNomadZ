@@ -2,6 +2,7 @@ package com.ridenomad.ridenomadz.presentation.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,10 +15,11 @@ import com.ridenomad.ridenomadz.presentation.onboarding.OnBoarding
 @Composable
 fun SetupNavGraph(
     navController: NavHostController,
+    startDestination: String
 
 
     ) {
-    NavHost(navController = navController, startDestination = Screens.OnBoarding.route) {
+    NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Screens.OnBoarding.route) {
             OnBoarding(navController = navController)
         }

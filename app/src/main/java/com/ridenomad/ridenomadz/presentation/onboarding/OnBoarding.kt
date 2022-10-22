@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.*
 import com.ridenomad.ridenomadz.presentation.navigation.Screens
@@ -28,7 +29,10 @@ import com.ridenomad.ridenomadz.presentation.theme.ui.purpleish
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
-fun OnBoarding(navController: NavHostController) {
+fun OnBoarding(
+    navController: NavHostController,
+    onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
+) {
     val pages = listOf(
         OnBoardingPage.First,
         OnBoardingPage.Second
@@ -60,6 +64,8 @@ fun OnBoarding(navController: NavHostController) {
             modifier = Modifier.weight(1f),
             pagerState = pagerState
         ) {
+            //persists the value of the on boarding process
+            onBoardingViewModel.saveOnBoardingState(true)
             navController.popBackStack()
             navController.navigate(Screens.Home.route)
 
