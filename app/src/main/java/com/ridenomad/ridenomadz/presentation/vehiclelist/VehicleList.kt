@@ -17,11 +17,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
+
 //import com.ridenomad.ridenomadz.presentation.DestinationScreen
 //import com.ridenomad.ridenomadz.presentation.navigateTo
 
@@ -137,7 +138,7 @@ fun vehicleCard(navController: NavController) {
             .wrapContentHeight()
             .clickable(
                 onClick = {
-                   // navigateTo(navController = navController, DestinationScreen.Home)
+                    navController.navigate(Screens.VehicleDesc.route)
                 }
             )
 
