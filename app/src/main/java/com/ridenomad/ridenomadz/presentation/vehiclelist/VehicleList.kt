@@ -37,11 +37,6 @@ fun VehicleList(navController: NavController) {
     }
 }
 
-@Preview
-@Composable
-fun test() {
-
-}
 
 @Composable
 fun topBox() {

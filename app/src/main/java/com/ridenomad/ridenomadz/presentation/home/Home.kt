@@ -18,13 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
-//import com.ridenomad.ridenomadz.presentation.DestinationScreen
-//import com.ridenomad.ridenomadz.presentation.navigateTo
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
+import com.ridenomad.ridenomadz.presentation.theme.ui.darkBlue
+
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -35,23 +35,18 @@ fun HomeScreen(navController: NavController) {
                 .fillMaxSize(), verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            profile()
-            searchText()
+            Profile()
+            SearchText()
 
-            rideClass(navController)
-            services()
+            RideClass(navController)
+            Services()
         }
     }
 }
 
-@Preview
-@Composable
-fun Home() {
-
-}
 
 @Composable
-private fun profile() {
+private fun Profile() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -72,7 +67,7 @@ private fun profile() {
 }
 
 @Composable
-private fun searchText() {
+private fun SearchText() {
     Column() {
         var selectedText by remember { mutableStateOf("") }
         OutlinedTextField(
@@ -95,17 +90,34 @@ private fun searchText() {
 }
 
 @Composable
-fun rideClass(navController: NavController) {
-    LazyRow(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-    ) {
-        items(40) {
-            cardClass(navController)
-            Spacer(modifier = Modifier.fillMaxWidth(0.18f))
+fun RideClass(navController: NavController) {
+
+    Column() {
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+        ) {
+            items(5) {
+                cardClass(navController)
+                Spacer(modifier = Modifier.fillMaxWidth(0.18f))
+            }
         }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        Text(
+            text = "Show All Vehicles",
+            fontSize = 20.sp,
+            color = darkBlue,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.clickable {
+                navController.navigate(Screens.VehicleList.route)
+            }
+        )
+
     }
+
 }
 
 
@@ -117,7 +129,8 @@ fun cardClass(navController: NavController) {
         .height(200.dp)
         .clickable(
             onClick = {
-               // navigateTo(navController = navController, DestinationScreen.Details)
+
+                navController.navigate(Screens.VehicleDesc.route)
             }
         )) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -142,7 +155,7 @@ fun cardClass(navController: NavController) {
 }
 
 @Composable
-private fun services() {
+private fun Services() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
