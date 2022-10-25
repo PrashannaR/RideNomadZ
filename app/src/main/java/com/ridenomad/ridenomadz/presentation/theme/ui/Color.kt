@@ -10,3 +10,5 @@ val Teal200 = Color(0xFF03DAC5)
 val darkBlue = Color(0xFF26275C) //splash screen color
 val purpleish = Color(0xFF6361FF)//color used in the buttons and icons
 val backgroundColor = Color(0xFFFEFEFE)
+
+val fontColor = Color(0xFF404040)
