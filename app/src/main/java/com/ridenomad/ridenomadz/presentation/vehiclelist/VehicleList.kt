@@ -14,11 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
 
 
 @Composable
@@ -33,30 +33,30 @@ fun VehicleList(navController: NavController) {
                 .height(40.dp)
                 .fillMaxWidth()
         )
-        //vehicleList(navController)
+
 
         Column {
-            topBox()
-            filterBar()
-            vehicleList()
-
+            TopBox()
+            FilterBar()
+            Vehicles(navController)
         }
 
     }
 }
 
-@Preview
+
 @Composable
-fun topBox() {
+fun TopBox() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .padding(top = 5.dp, start = 20.dp, end = 20.dp)
             .border(
                 border = BorderStroke(width = 1.dp, Color.LightGray),
                 shape = RoundedCornerShape(8.dp)
             )
-            .padding(top = 5.dp, start = 10.dp, end = 10.dp)
+
             .height(60.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
@@ -75,18 +75,19 @@ fun topBox() {
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
-fun filterBar() {
+fun FilterBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .padding(top = 5.dp, bottom = 5.dp, start = 20.dp, end = 20.dp)
             .border(
                 border = BorderStroke(width = 0.25.dp, Color.LightGray),
                 shape = RoundedCornerShape(8.dp)
             )
-            .padding(top = 5.dp, bottom = 5.dp, start = 10.dp, end = 10.dp)
+
             .height(60.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
@@ -115,10 +116,9 @@ fun filterBar() {
     }
 }
 
-@Preview(showSystemUi = true)
+
 @Composable
-//private fun vehicleList(navController: NavController) {
-private fun vehicleList() {
+private fun Vehicles(navController: NavController) {
 
     LazyColumn(modifier = Modifier.padding(top = 0.dp)) {
 //        items(5) {
@@ -142,21 +142,20 @@ private fun vehicleList() {
 //        }
 
         items(5) {
-            vehicleCard()
+            VehicleCard(navController)
         }
     }
 }
 
 @Composable
-//fun vehicleCard(navController: NavController) {
-fun vehicleCard() {
+fun VehicleCard(navController: NavController) {
     Card(elevation = 0.dp, shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .padding(10.dp)
             .wrapContentHeight()
             .clickable(
                 onClick = {
-                    //navController.navigate(Screens.VehicleDesc.route)
+                    navController.navigate(Screens.VehicleDesc.route)
                 }
             )
 
