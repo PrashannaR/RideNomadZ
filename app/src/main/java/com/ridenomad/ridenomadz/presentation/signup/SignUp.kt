@@ -17,9 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
-
-//import com.ridenomad.ridenomadz.presentation.DestinationScreen
-//import com.ridenomad.ridenomadz.presentation.navigateTo
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
 
 
 @Composable
@@ -68,7 +66,8 @@ fun content(navController: NavController) {
         }
         Button(
             onClick = {
-                //navigateTo(navController, DestinationScreen.Home)
+                
+                navController.navigate(Screens.Home.route)
             },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = colorResource(id = R.color.primary),

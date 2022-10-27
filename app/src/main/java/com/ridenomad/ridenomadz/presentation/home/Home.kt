@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
 import com.ridenomad.ridenomadz.presentation.navigation.Screens
-import com.ridenomad.ridenomadz.presentation.theme.ui.darkBlue
 import com.ridenomad.ridenomadz.presentation.theme.ui.purpleish
 
 

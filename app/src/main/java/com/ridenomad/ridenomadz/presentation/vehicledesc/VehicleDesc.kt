@@ -19,17 +19,18 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
 import com.ridenomad.ridenomadz.presentation.theme.ui.backgroundColor
 import com.ridenomad.ridenomadz.presentation.theme.ui.fontColor
 import com.ridenomad.ridenomadz.presentation.theme.ui.purpleish
 
-@Preview
+
 @Composable
-fun VehicleDesc() {
+fun VehicleDesc(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -230,9 +231,11 @@ fun VehicleDesc() {
         )
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate(Screens.SignUp.route)
+            },
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp,8.dp,8.dp,8.dp))
+                .clip(RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp))
                 .fillMaxWidth(.80f)
                 .height(70.dp)
                 .align(CenterHorizontally)

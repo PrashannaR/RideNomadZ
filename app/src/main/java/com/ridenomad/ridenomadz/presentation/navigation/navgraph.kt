@@ -49,7 +49,12 @@ fun SetupNavGraph(
         }
 
         composable(route = Screens.VehicleDesc.route){
-            VehicleDesc()
+            VehicleDesc(navController)
+        }
+
+        composable(route = Screens.SignUp.route){
+            SignUp(navController = navController)
+
         }
 
 //        composable(route = Screens.EnterDetails.route) {
