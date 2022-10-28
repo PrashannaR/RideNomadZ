@@ -1,15 +1,11 @@
 package com.ridenomad.ridenomadz.presentation
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.ridenomad.ridenomadz.presentation.navigation.SetupNavGraph
@@ -35,12 +31,18 @@ class MainActivity : ComponentActivity() {
             RideNomadZTheme {
                 val screen by splashViewModel.startDestination
                 val navController = rememberNavController()
-                SetupNavGraph(
-                    navController = navController,
-                    startDestination = screen,
+
+                if (screen.isNotEmpty()) {
+                    SetupNavGraph(
+                        navController = navController,
+                        startDestination = screen,
+                        this
 
 
-                )
+                    )
+
+                }
+
 
             }
         }

@@ -65,7 +65,7 @@ fun OnBoarding(
             pagerState = pagerState
         ) {
             //persists the value of the on boarding process
-            onBoardingViewModel.saveOnBoardingState(true)
+            onBoardingViewModel.saveOnBoardingState(completed = true)
             navController.popBackStack()
             navController.navigate(Screens.Home.route)
 
@@ -138,7 +138,7 @@ fun FinishButton(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Finish")
+                Text(text = "Explore")
 
             }
 

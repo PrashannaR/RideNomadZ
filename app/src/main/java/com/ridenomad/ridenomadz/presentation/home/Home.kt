@@ -5,10 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.*
+import androidx.compose.material.Card
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,14 +20,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.ridenomad.ridenomadz.R
 import com.ridenomad.ridenomadz.presentation.navigation.Screens
-import com.ridenomad.ridenomadz.presentation.theme.ui.darkBlue
 import com.ridenomad.ridenomadz.presentation.theme.ui.purpleish
 
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavHostController) {
     Surface(modifier = Modifier, color = Color.White) {
         Column(
             modifier = Modifier
@@ -37,7 +37,7 @@ fun HomeScreen(navController: NavController) {
 
             ) {
             Profile()
-            SearchText()
+            SearchText(navController)
 
             RideClass(navController)
             Text(
@@ -75,21 +75,34 @@ private fun Profile() {
 
 
 @Composable
-private fun SearchText() {
+private fun SearchText(navController: NavHostController) {
     Column() {
-        var selectedText by remember { mutableStateOf("") }
-        OutlinedTextField(
-            value = selectedText,
-            onValueChange = { selectedText = it },
+//        var selectedText by remember { mutableStateOf("") }
+//        OutlinedTextField(
+//            value = selectedText,
+//            onValueChange = { selectedText = it },
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(bottom = 20.dp, top = 1.dp)
+//                .clickable {
+//                    navController.navigate(Screens.EnterDetails.route)
+//
+//                },
+//            label = { Text("Search cities") },
+//            leadingIcon = {
+//                Icon(
+//                    Icons.Filled.Search, "contentDescription",
+//                )
+//            }
+//        )
+
+        Text(
+            text = "Search Cities", fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 20.dp, top = 1.dp),
-            label = { Text("Search cities") },
-            leadingIcon = {
-                Icon(
-                    Icons.Filled.Search, "contentDescription",
-                )
-            }
+                .padding(bottom = 12.dp)
+                .clickable {
+                    navController.navigate(Screens.EnterDetails.route)
+                }
         )
 
 
