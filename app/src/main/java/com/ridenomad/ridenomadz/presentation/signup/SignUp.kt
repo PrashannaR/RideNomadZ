@@ -66,7 +66,7 @@ fun content(navController: NavController) {
         }
         Button(
             onClick = {
-                
+
                 navController.navigate(Screens.Home.route)
             },
             colors = ButtonDefaults.buttonColors(

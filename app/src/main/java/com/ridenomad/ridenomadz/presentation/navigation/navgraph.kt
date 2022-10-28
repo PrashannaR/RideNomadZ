@@ -1,11 +1,13 @@
 package com.ridenomad.ridenomadz.presentation.navigation
 
+import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.ridenomad.ridenomadz.presentation.details.app
 import com.ridenomad.ridenomadz.presentation.home.HomeScreen
 import com.ridenomad.ridenomadz.presentation.home.SampleHome
 import com.ridenomad.ridenomadz.presentation.onboarding.OnBoarding
@@ -19,6 +21,7 @@ import com.ridenomad.ridenomadz.presentation.vehiclelist.VehicleList
 fun SetupNavGraph(
     navController: NavHostController,
     startDestination: String,
+    context: Context
 
     ) {
     NavHost(navController = navController, startDestination = startDestination) {
@@ -57,9 +60,9 @@ fun SetupNavGraph(
 
         }
 
-//        composable(route = Screens.EnterDetails.route) {
-//            app(context = context, navController = navController)
-//        }
+        composable(route = Screens.EnterDetails.route) {
+            app(context = context, navController = navController)
+        }
 
     }
 
