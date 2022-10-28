@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.ridenomad.ridenomadz.R
+import com.ridenomad.ridenomadz.presentation.navigation.Screens
 //import com.ridenomad.ridenomadz.presentation.DestinationScreen
 //import com.ridenomad.ridenomadz.presentation.navigateTo
 import java.util.*
@@ -78,6 +79,7 @@ fun submitButton(context: Context, navController: NavController) {
                 color = com.ridenomad.ridenomadz.presentation.theme.ui.Purple700
             ), shape = RoundedCornerShape(12.dp),
             onClick = {
+                navController.navigate(Screens.VehicleList.route)
 //                navigateTo(
 //                    navController = navController,
 //                    DestinationScreen.VehicleList
