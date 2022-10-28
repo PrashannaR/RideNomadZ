@@ -31,13 +31,18 @@ class MainActivity : ComponentActivity() {
             RideNomadZTheme {
                 val screen by splashViewModel.startDestination
                 val navController = rememberNavController()
-                SetupNavGraph(
-                    navController = navController,
-                    startDestination = screen,
-                    this
+
+                if (screen.isNotEmpty()) {
+                    SetupNavGraph(
+                        navController = navController,
+                        startDestination = screen,
+                        this
 
 
-                )
+                    )
+
+                }
+
 
             }
         }
