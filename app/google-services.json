@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1021434190906",
+    "project_id": "ridenomadz-c9090",
+    "storage_bucket": "ridenomadz-c9090.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021434190906:android:c4474f02beeae241246903",
+        "android_client_info": {
+          "package_name": "com.ridenomad.ridenomadz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021434190906-8r1a21vlob6j0h8p56gunt9fp6i43jd0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIPJ8woRGt8Mo35fJzYAkwbdPsTdOl5f0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021434190906-8r1a21vlob6j0h8p56gunt9fp6i43jd0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
