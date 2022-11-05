@@ -1,15 +1,19 @@
 package com.ridenomad.ridenomadz.presentation.signup
 
 import android.app.Activity
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,25 +49,51 @@ fun EnterPhone(
             .padding(horizontal = 20.dp)
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 30.dp),
+            horizontalAlignment = Alignment.Start
         ) {
-            Column(modifier = Modifier.padding(top = 1.dp, bottom = 30.dp)) {
+            Column(modifier = Modifier.padding(top = 1.dp, bottom = 4.dp)) {
                 Text(text = "Enter Phone Number For", fontSize = 25.sp, fontWeight = FontWeight.Bold)
                 Text(text = "Verification", fontSize = 25.sp, fontWeight = FontWeight.Bold)
             }
+
             Spacer(modifier = Modifier.height(20.dp))
-            
-            Row() {
-                TextField(value = +91, onValueChange = "+91"=it)
+
+            Row(modifier = Modifier.padding(3.dp)) {
+                Row(
+                    modifier = Modifier
+                        .border(
+                            border = BorderStroke(width = 1.dp, Color.DarkGray),
+                            shape = RoundedCornerShape(4.dp)
+                        )
+                        .weight(0.25f)
+                        .padding(top = 1.dp, end = 1.dp)
+                        .height(55.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ){
+                    Image(painter = painterResource(id = R.drawable.ic_india), contentDescription = " none",
+                    modifier = Modifier.padding(1.dp))
+                    Text(text ="+91")
+                }
+
+                Spacer(modifier = Modifier.height(40.dp))
+
                 OutlinedTextField(value = mobile, onValueChange = {
                     mobile = it
-                }, modifier = Modifier.fillMaxWidth())
+                }, modifier = Modifier.padding(start = 6.dp))
+
             }
-            
+
+               /* OutlinedTextField(value = mobile, onValueChange = {
+                    mobile = it
+                }, modifier = Modifier.fillMaxWidth())*/
+
+
 
             Spacer(modifier = Modifier.height(20.dp))
-
             Button(onClick = {
                 scope.launch(Dispatchers.Main){
                     viewModel.createUserWithPhone(
@@ -86,16 +116,38 @@ fun EnterPhone(
                         }
                     }
                 }
-            }) {
-                Text(text = "Submit")
+            },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = colorResource(id = R.color.primary),
+                    contentColor = MaterialTheme.colors.primary
+                ),
+                shape = RoundedCornerShape(6.dp), modifier = Modifier
+                    .fillMaxWidth()
+                    .height(55.dp)
+            ) {
+                Text(
+                    "Get OTP",
+                    fontSize = 17.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
             }
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(text = "Enter Otp")
-            Spacer(modifier = Modifier.height(20.dp))
-            OtpView(otpText = otp){
-                otp = it
+
+            Spacer(modifier = Modifier.height(80.dp))
+
+            Row(modifier = Modifier.fillMaxWidth(),Arrangement.Center) {
+                Text(text = "Enter OTP", fontSize = 25.sp, fontWeight = FontWeight.Bold)
             }
+
             Spacer(modifier = Modifier.height(20.dp))
+            Row(modifier = Modifier.fillMaxWidth(),Arrangement.Center) {
+                OtpView(otpText = otp){
+                    otp = it
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
             Button(onClick = {
                 scope.launch(Dispatchers.Main){
                     viewModel.signInWithCredential(
@@ -116,8 +168,20 @@ fun EnterPhone(
                         }
                     }
                 }
-            }) {
-                Text(text = "Verify")
+            },colors = ButtonDefaults.buttonColors(
+                backgroundColor = colorResource(id = R.color.primary),
+                contentColor = MaterialTheme.colors.primary
+            ),
+                shape = RoundedCornerShape(6.dp), modifier = Modifier
+                    .fillMaxWidth()
+                    .height(55.dp)
+            ) {
+                Text(
+                    "Verify",
+                    fontSize = 17.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }
