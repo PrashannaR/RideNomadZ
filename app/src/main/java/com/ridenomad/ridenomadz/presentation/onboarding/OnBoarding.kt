@@ -67,7 +67,7 @@ fun OnBoarding(
             //persists the value of the on boarding process
             onBoardingViewModel.saveOnBoardingState(completed = true)
             navController.popBackStack()
-            navController.navigate(Screens.Home.route)
+            navController.navigate(Screens.EnterPhone.route)  // changed for testing
 
         }
 

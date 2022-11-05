@@ -36,9 +36,7 @@ class MainActivity : ComponentActivity() {
                     SetupNavGraph(
                         navController = navController,
                         startDestination = screen,
-                        this
-
-
+                        this, activity = this
                     )
 
                 }
