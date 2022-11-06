@@ -34,66 +34,6 @@ const val OTP_VIEW_TYPE_BORDER = 2
 
 
 @Composable
-fun EnterOTP(activity: Activity,
-             viewModel: AuthViewModel = hiltViewModel(),
-             navController: NavController
-){
-    var otp by remember { mutableStateOf("") }
-    val scope = rememberCoroutineScope()
-    var isDialog by remember{ mutableStateOf(false) }
-
-    if(isDialog)
-        CommonDialog()
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 20.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(  modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Text(text = "Enter Otp")
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            OtpView(otpText = otp){
-                otp = it
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(onClick = {
-                scope.launch(Dispatchers.Main){
-                    viewModel.signInWithCredential(
-                        otp
-                    ).collect{
-                        when(it){
-                            is ResultState.Success->{
-                                isDialog = false
-                                activity.showMsg(it.data)
-                            }
-                            is ResultState.Failure->{
-                                isDialog = false
-                                activity.showMsg(it.msg.toString())
-                            }
-                            ResultState.Loading->{
-                                isDialog = true
-                            }
-                        }
-                    }
-                }
-            }) {
-                Text(text = "Verify")
-            }
-        }
-    }
-}
-
-
-
-@Composable
 fun OtpView(
     modifier: Modifier = Modifier,
     otpText: String = "",

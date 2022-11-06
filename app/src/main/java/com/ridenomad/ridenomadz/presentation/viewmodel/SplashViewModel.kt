@@ -25,7 +25,7 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             repository.readOnBoardingState().collect() { completed ->
                 if (completed) {
-                    _startDestination.value = Screens.EnterPhone.route  // changed for testing
+                    _startDestination.value = Screens.Home.route
                 } else {
                     _startDestination.value = Screens.OnBoarding.route
                 }

@@ -13,7 +13,6 @@ import com.ridenomad.ridenomadz.presentation.details.app
 import com.ridenomad.ridenomadz.presentation.home.HomeScreen
 import com.ridenomad.ridenomadz.presentation.home.SampleHome
 import com.ridenomad.ridenomadz.presentation.onboarding.OnBoarding
-import com.ridenomad.ridenomadz.presentation.signup.EnterOTP
 import com.ridenomad.ridenomadz.presentation.signup.EnterPhone
 import com.ridenomad.ridenomadz.presentation.signup.SignUp
 import com.ridenomad.ridenomadz.presentation.vehicledesc.VehicleDesc
@@ -73,10 +72,6 @@ fun SetupNavGraph(
         composable(route = Screens.EnterPhone.route) {
             val vm = hiltViewModel<AuthViewModel>()
             EnterPhone(activity = activity, navController = navController, viewModel = vm)
-        }
-        composable(route = Screens.EnterOTP.route) {
-            val vm = hiltViewModel<AuthViewModel>()
-            EnterOTP(activity = activity, navController = navController, viewModel = vm)
         }
 
     }

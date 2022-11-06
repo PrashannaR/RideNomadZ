@@ -103,7 +103,6 @@ fun EnterPhone(
                         when(it){
                             is ResultState.Success->{
                                 isDialog = false
-                                navController.navigate(Screens.EnterOTP.route)
                                 activity.showMsg(it.data)
                             }
                             is ResultState.Failure->{
@@ -156,6 +155,7 @@ fun EnterPhone(
                         when(it){
                             is ResultState.Success->{
                                 isDialog = false
+                                navController.navigate(Screens.Home.route)
                                 activity.showMsg(it.data)
                             }
                             is ResultState.Failure->{
